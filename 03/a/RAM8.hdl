@@ -27,5 +27,5 @@ CHIP RAM8 {
     Register (in = in, load = g, out = septimo);
     Register (in = in, load = h, out = octavo);
 
-    Mux8Way16 (a = primero, b = segundo, c = tercero, d = cuarto, e = quinto, f = sexto, g = septimo, h = octavo);
+    Mux8Way16 (a = primero, b = segundo, c = tercero, d = cuarto, e = quinto, f = sexto, g = septimo, h = octavo, sel = address, out = out);
 }
