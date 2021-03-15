@@ -17,4 +17,10 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+     Inc16 (in=lastout, out=inclastout);
+
+    Mux8Way (a=lastout, b=inclastout, sel=inc, out=val1);
+    Mux16 (a=val1, b=in, sel=load, out=val2);
+ 
+
 }
