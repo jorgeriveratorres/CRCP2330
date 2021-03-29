@@ -18,3 +18,12 @@
 D = A
 @0
 M = D
+
+@KBDCHECK
+0;JMP
+
+(BLACK)
+@1
+M = -1
+@CHANGE
+0;JMP
