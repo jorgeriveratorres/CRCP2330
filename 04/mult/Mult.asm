@@ -10,3 +10,9 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+
+//Assign a as the value of R0 
+@R0
+D = M
+@a
+M = D
