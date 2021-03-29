@@ -39,7 +39,7 @@ D;JLE
 D = M
 @R2
 M = M + D
-@1
+@R1
 D = A
 @a
 M = M - D
