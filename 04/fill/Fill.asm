@@ -12,3 +12,17 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+(RESTART)
+	@SCREEN
+	D = A
+	@0
+	M = D
+
+(KBDCHECK)
+	@KBD
+	D = M
+	@BlACK
+	D;JGT
+	@WHITEE
+	D;JEQ
