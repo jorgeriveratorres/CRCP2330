@@ -27,3 +27,9 @@ M = D
 M = -1
 @CHANGE
 0;JMP
+
+(WHITE)
+@1
+M = 0
+@CHANGE
+0;JMP
