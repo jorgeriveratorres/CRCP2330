@@ -29,3 +29,8 @@ D = A
 @R2
 M = D
 
+(LOOP)
+@a
+D = M
+@END
+D;JLE
