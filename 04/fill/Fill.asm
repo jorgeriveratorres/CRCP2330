@@ -33,3 +33,11 @@ M = -1
 M = 0
 @CHANGE
 0;JMP
+
+(CHANGE)
+@1
+D = M
+
+@0
+A = M
+M = D
