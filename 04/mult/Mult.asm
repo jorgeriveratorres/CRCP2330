@@ -16,3 +16,16 @@
 D = M
 @a
 M = D
+
+//Assign b to register R1
+@R1
+D = M
+@b
+M = D
+
+//If R2 = 0, then reset the sum
+@0
+D = A
+@R2
+M = D
+
