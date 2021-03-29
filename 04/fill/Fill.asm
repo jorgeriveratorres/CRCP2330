@@ -14,15 +14,7 @@
 // Put your code here.
 
 (RESTART)
-	@SCREEN
-	D = A
-	@0
-	M = D
-
-(KBDCHECK)
-	@KBD
-	D = M
-	@BlACK
-	D;JGT
-	@WHITEE
-	D;JEQ
+@SCREEN
+D = A
+@0
+M = D
