@@ -41,3 +41,18 @@ D = M
 @0
 A = M
 M = D
+
+@0
+D = M + 1
+@KBD
+D = A - D
+
+@0
+M = M + 1
+A = M
+
+@CHANGE
+D;JGT
+
+@RESTART
+0;JMP
