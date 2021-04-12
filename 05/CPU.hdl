@@ -40,4 +40,19 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    Not(in = instruction[15], out = instructionA);
+
+    //A register
+    And(a = cInstruction, b = instruction[5], out = computeA);
+    Mux16(a = instruction, b = alu, sel = instruction[15], out = newA);
+    Or(a = instructionA, b = computeA, out = loadA);
+    ARegister(in = newA, load = loadA, out = a);
+
+    //D register
+
+    //ALU
+
+    //jump
+
+    //outputs
 }
