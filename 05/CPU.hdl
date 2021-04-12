@@ -53,24 +53,24 @@ CHIP CPU {
 
     //D register
     And(a = instruction[4], b = instructionC, out = loadD);
-    DRegister(in  alu, load = loadD, out = d);
+    DRegister(in = alu, load = loadD, out = d);
 
     //ALU
-    Mux16(a = aOut, b = inM. sel = instruction[12], out = AorM);
+    Mux16(a = aOut, b = inM, sel = instruction[12], out = AorM);
     //c1
-    And(instruction [11], b = true, out = zx); 
+    And(a = instruction[11], b = true, out = zx); 
     //c2
-    And(instruction [10], b = true, out = nx);
+    And(a = instruction[10], b = true, out = nx);
     //c3
-    And(instruction [9], b = true, out = zy);
+    And(a = instruction[9], b = true, out = zy);
     //c4
-    And(instruction [8], b = true, out = ny);
+    And(a = instruction[8], b = true, out = ny);
     //c5
-    And(instruction [7], b = true, out = f);
+    And(a = instruction[7], b = true, out = f);
     //c6
-    And(instruction [6], b = true, out = no);
+    And(a = instruction[6], b = true, out = no);
 
-    ALU(x = d, y = AorM, zx = zx, nx = nx, yz = yz. ny = ny, f = f, no = no, out = ALUout, zr = zr, ng = ng);
+    ALU(x = d, y = AorM, zx = zx, nx = nx, zy = zy, ny = ny, f = f, no = no, out = ALUout, zr = zr, ng = ng);
 
 
     //jump
@@ -88,7 +88,13 @@ CHIP CPU {
     Or(a = jltz, b = jPosition, out = jumpCondition);
 
     And(a = instructionC, b = jumpCondition, out = jump);
-    
 
-    //outputs
+
+    //salidas
+
+    And(a = cInstruction, b = instruction[3], out = writeM);
+    And16(a = a, b = true, out[0..14] = addressM);
+    And16(a = alu, b = true, out = outM);
+
+    PC(in = a, load = jump, inc = true, reset = reset, out[0..14] = pc);
 }
