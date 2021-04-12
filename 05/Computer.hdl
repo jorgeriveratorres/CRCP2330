@@ -20,4 +20,6 @@ CHIP Computer {
 
     PARTS:
     // Put your code here:
+    Or8Way(in = in[0..7], out = lower);
+    or8Way(in = inp[8..15], out = upper);
 }
