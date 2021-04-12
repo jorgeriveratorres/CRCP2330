@@ -75,5 +75,20 @@ CHIP CPU {
 
     //jump
 
+
+    Not(in = zero, out = notZero);
+    Not(in = negative, out = notNegative);
+
+    And(a = notZero, b = notNegative, out = positive);
+    And(a = instruction[0], b = positive, out = jPosition);
+    And(a = instruction[1], b = zero, out = jZero);
+    And(a = instruction[2], b = negative, out = jlt);
+
+    Or(a = jlt, b = jZero, out = jltZero);
+    Or(a = jltz, b = jPosition, out = jumpCondition);
+
+    And(a = instructionC, b = jumpCondition, out = jump);
+    
+
     //outputs
 }
