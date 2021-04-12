@@ -40,7 +40,10 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+
+    //decides wheter its an a instruction or c instruction
     Not(in = instruction[15], out = instructionA);
+    Not(in = instructionA, out = instructionC);
 
     //A register
     And(a = cInstruction, b = instruction[5], out = computeA);
@@ -49,6 +52,8 @@ CHIP CPU {
     ARegister(in = newA, load = loadA, out = a);
 
     //D register
+    And(a = instruction[4], b = instructionC, out = loadD);
+    DRegister(in  alu, load = loadD, out = d);
 
     //ALU
 
