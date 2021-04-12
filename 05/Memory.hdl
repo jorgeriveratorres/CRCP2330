@@ -32,12 +32,12 @@ CHIP Memory {
     DMux(in = load, sel = address[14], a = ramload, b = screenload);
     
     //you only need 14 bits for the ram (0..13)
-    RAM16K(in = in, load = ramload, address = addresss[0..13], out = ramout);
+    RAM16K(in = in, load = ramload, address = address[0..13], out = ramout);
     
     Keyboard(out = keyBoardOut);
     
     Screen(in = in, load = screenload, address = address[0..12], out = screenout);
     
-    Mux4Way14(a = ramout, b = ramout, c = screenout, d = keyboardout, sel = address[13..14], out = out);
+    Mux4Way16(a = ramout, b = ramout, c = screenout, d = keyBoardOut, sel = address[13..14], out = out);
 
 }
