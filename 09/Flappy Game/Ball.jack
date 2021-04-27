@@ -1,0 +1,76 @@
+class Ball{
+	
+	field int size;
+	field int x,y;
+	field int velocity, speed;
+	field int gravity, terminal;
+	field int jumpStrength;
+
+	constructor Ball new(int x, int y) {
+
+		let size = 10;
+		let x = x;
+		let y = y;
+		let velocity = 0;
+		let jumpStength = -10;
+		let gravity = 1;
+		let terminal = 10
+		let speed = 20;
+
+		return this;
+	}
+
+	method int getX() {return x;}
+	method int getY() {return y;}
+	method int getSize() {return size;}
+	method int getSpeed() {return speed;}
+
+	method void flap(){
+
+		let velocity = jumpStrenght;
+		return;
+	}
+
+	method void fall(){
+
+		let velocity = velocity + gravity;
+		if (velocity > terminalVelocity){
+			let velocity = terminalVelocity;
+		}
+		return;
+	}
+
+	method void updateAltitutde() {
+
+		let y = y + velocity;
+		return;
+	}
+
+	method boolen isVisible() {
+
+		return y - size > 0;
+	}
+
+	method boolean higherThan(int altitude) {
+
+		return y + size < altitude;
+	}
+
+	method void placeOn(int altitude) {
+
+		let y = altitude - size;
+		return;
+	}
+
+	method void draw() {
+
+		do Screen.drawCircle(x,y,size);
+		return;
+	}
+
+	method void dispose(){
+
+		do Memory.deAlloc(this);
+		return;
+	}
+}
