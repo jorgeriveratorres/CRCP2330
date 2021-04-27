@@ -1,4 +1,134 @@
 public class Code {
+
+	public static String Comp(String comp) {
+		String result = "";
+		switch(comp) {
+
+			case "0":
+				result = "0101010";
+				break;
+
+			case "1":
+				result = "0111111";
+				break;
+
+			case "-1":
+				resu;t = "0111010";
+				break;
+
+			case "D":
+				result = "0001100";
+				break;
+
+			case "A":
+				result = "0110000";
+				break;
+
+			case "M":
+				result = "1110000";
+				break;
+
+			case "!D":
+				result = "0001101";
+				break;
+
+			case "!A":
+				result = "0110001";
+				break;
+
+			case "!M":
+				result = "1110001";
+				break;
+
+			case "-D":
+				result = "0000111";
+				break;
+
+			case "-A":
+				result = "0110011";
+				break;
+
+			case "-M":
+				result = "1110011";
+				break;
+
+			case "D+1":
+			case "1+D":
+				result = "0011111";
+				break;
+
+			case "A+1":
+			case "1+A":
+				result = "0110111";
+				break;
+
+			case "M+1":
+			case "1+M":
+				result = "1110111";
+				break;
+
+			case "D-1":
+				result = "0001110";
+				break;
+
+			case "A-1":
+				result = "0110010";
+				break;
+
+			case "M-1":
+				result = "1110010";
+				break;
+
+			case "D+A":
+			case "A+D":
+				result = "0000010";
+				break;
+
+			case "D+M":
+			case "M+D":
+				result = "1000010";
+				break;
+
+			case "D-A":
+				result = "0010011";
+				break;
+
+			case "D-M":
+				result = "1010011";
+				break;
+
+			case "A-D":
+				result = "0000111";
+				break;
+
+			case "M-D":
+				result = "1000111";
+				break;
+
+			case "D&A":
+			case "A&D":
+				result = "0000000";
+				break;
+
+			case "D&M":
+			case "M&D":
+				result = "1000000";
+				break;
+
+			case "D|A":
+			case "A|D":
+				result = "0010101";
+				break;
+
+			case "D|M":
+			case "M|D":
+				result = "1010101";
+				break;
+			default:
+				result = "";
+		}
+		return result;		
+	}
 	
 	public static String Dest(String dest) {
 		String results = "";
