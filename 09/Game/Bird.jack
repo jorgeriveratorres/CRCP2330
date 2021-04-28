@@ -1,0 +1,36 @@
+class Bird {
+	
+	field int size;
+	field int x,y;
+	fiel int velocity, speed;
+	field int gravity, terminalVelocity;
+	field int flapStrenght;
+
+	constructor Bird new(int initialX, int initialY) {
+
+		let size = 10;
+		let x = intialX;
+		let y = intialY;
+		let velocity = 0;
+		let flapStrength = -10;
+		let terminalVelocity = 10;
+		let gravity = 1;
+		let speed = 20;
+
+		return this;
+	}
+
+	method int getX() {
+		return x;
+	}
+
+	method int getY() {
+		return y;
+	}
+
+	method int getSize() {
+		return size;
+	}
+
+	
+}
