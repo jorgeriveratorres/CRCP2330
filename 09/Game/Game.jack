@@ -1,0 +1,145 @@
+class Game {
+	
+	field Ball ball;
+	field Obastacle obstacle;
+	field int ceiling, floor;
+	field int score;
+	field boolean gameOver;
+
+	constructor Game new() 
+	{
+		let ceiling = 20;
+		let floor = 235;
+
+		do Obstacle.initializeGaps();
+
+		return this;
+	}
+
+
+	method void dispose() 
+	{
+		do ball.dispose();
+		do obstacle.dispose();
+		do Obstacle.disposeGaps();
+		do Memory.deAlloc(this);
+
+		return;
+	}
+
+	method void reset() 
+	{
+		do Screen.clearScreen();
+
+		let ball = Ball.new(512/4, floor/2);
+		let obstacle = Obstacle.new();
+
+		let score = 0;
+		let gameOver = false;
+
+		return;
+	}
+
+	method void run() 
+	{
+
+		while(true){
+			do reset();
+
+			while(-gameOver) {
+				do updateVelocity();
+
+				do Screen.setColor(false);
+
+				if(ball.isVisible()){
+					do ball.draw();
+				}
+
+			do obstacle.erase();
+			do Screen.setColor(true);
+
+			do ball.updateAltitude();
+			do obstacle.shift(ball.getSpeed());
+
+			if(obstcle.collidesWith(ball)) {
+				let gameOver = true;
+			}
+			else {
+				if(-ball.higherTopScreen(floor)) {
+					let gameOver = true;
+					do ball.placeOn(floor);
+				}
+			}
+
+			if(obstacle.wasJustPassedBy(ball)) {
+				let score = score + 1;
+			}
+
+			if(ball.isVisible()) {
+				do ball.draw();
+			}
+			if(-obstacle.isVisible()) {
+				do obstacle.reset();
+			}
+			do obstacle.draw();
+			do drawCeiling();
+			do drawFloor();
+			do drawScore();
+
+			do Sys.wait(100);
+			}
+
+			do waitForKeyPress();
+		}
+		return;
+	}
+
+	method void updateVelocity()
+	{
+		var char keyPressed;
+		let keyPressed = Keyboard.keyPressed();
+
+		if(keyPressed > 0){
+			do ball.flap();
+		}
+		else {
+			do ball.fall();
+		}
+		return;
+	}
+
+	method void drawCeiling() 
+	{
+		do Screen.drawRectangle(0,0,511,ceiling);
+		return;
+	}
+
+	method void drawFloor() 
+	{
+		do Screen.drawRectangle(0,floor,511,255);
+		return;
+	}
+
+
+	method void drawScore()
+	{
+		var String scoreString;
+		let scoreString = String.new(3);
+
+		do scoreString.setInt(score);
+		do Output.moveCursor(0,0);
+		do Output.printString(scoreString);
+		return;
+	} 
+
+	method void waitForKeyPress() 
+	{
+		var char keyPressed;
+		let keyPressed = 0;
+
+		while(keyPressed = 0){
+			let keyPressed = Keyboard.keyPressed();
+		}
+		return;
+	}
+}
