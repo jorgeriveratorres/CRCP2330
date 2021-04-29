@@ -154,3 +154,31 @@ public class Asemblaje {
 				throw new Exception("Command could not be converted");
 		}
 	}
+
+	public char jump(String line) {
+		if(line.indexOf(';') == -1) {
+			return 0;
+		}
+
+		String jump = line.replaceAll(".*;", "");
+
+		switch(jump) {
+			case "JGT":
+				return 0b001;
+			case "JEQ":
+				return 0b010;
+			case "JGE":
+				return 0b011;
+			case "JLT":
+				return 0b100;
+			case "JNE":
+				return 0b101;
+			case "JLE":
+				return 0b110;
+			case "JMP":
+				return 0b111;
+			default:
+				return 0;
+		}
+	}
+}
