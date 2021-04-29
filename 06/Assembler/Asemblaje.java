@@ -181,4 +181,23 @@ public class Asemblaje {
 				return 0;
 		}
 	}
+
+	public void firstPass() throws Exception {
+
+		String current = next();
+
+		while(current != null){
+			if(type(current) == L2) {
+				if(map.put(current.substring(1, current.length() - 1), currentLine) != null) {
+					return;
+				}
+			}
+			else {
+				currentLine += 1;
+			}
+			current = next();
+		}
+	}
+
+	
 }
