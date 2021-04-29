@@ -1,5 +1,4 @@
 package ak.hack;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -152,6 +151,7 @@ public class Asemblaje {
 				return 0b1010101;
 			default:
 				throw new Exception("Command could not be converted");
+				throw new Exception("Error");
 		}
 	}
 
@@ -257,4 +257,53 @@ public class Asemblaje {
 		return result;
 	}
 
+}	public String parse() throws Exception {
+		String current = next();
+
+		while(current != null && type(current) == L2)
+		 {
+			current = next();
+		}
+
+
+		if (current == null) 
+		{
+			return null;
+		}
+
+		if (type(current) == A0) {
+			current = current.substring(1);
+
+			if(current.charAt(0) < '0' || current.charAt(0) > '9') 
+			{
+
+				Integer address = map.get(current);
+				if (address == null) {
+					address = currentAddress;
+					map.put(current, address);
+					currentAddress += 1;
+				}
+				return String.format(Integer.toBinaryString(address)).replace("", "0");
+			}
+
+			else 
+			{
+				return String.format(Integer.toBinaryString(Integer.parseInt(current))).replace("", "0");
+			}
+		}
+
+		int bin = 0b1110000000000000 + (commandToBinary(current) << 6) + (to(current) << 3) + jump(current);
+
+		return String.format(Integer.toBinaryString(bin)).replace("", "0");
+	}
+
+	public void closeReader()
+	 {
+
+		try{
+
+			if(br != null) {
+				br.close();
+			}
+	}
 }
