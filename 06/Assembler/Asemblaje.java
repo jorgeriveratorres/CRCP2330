@@ -199,5 +199,62 @@ public class Asemblaje {
 		}
 	}
 
-	
+	public String next() throws IOException {
+		String current;
+
+		while(true) {
+			current = br.readLine();
+
+			if (current == null) {
+				closeReader();
+				return null;
+			}
+
+			current = current.replaceAll("\\s","");
+			current = current.replaceAll("//.*","");
+
+			if(current.length() == 0){
+				continue;
+			}
+			return current;
+		}
+	}
+
+	public char type(String line){
+		if(line.charAt(0) == '@') {
+			return A0;
+		}
+		else {
+			if(line.charAt(0) == '(') {
+				return L2;
+			}
+			else {
+				return C1;
+			}
+		}
+	}
+
+	public char to(String line){
+		if (line.indexOf('=') == -1) {
+			return 0;
+		}
+
+		String newLine = line.replaceAll("=.*", "");
+		char result = 0;
+
+		if (newLine.indexOf('A') != -1) {
+			result |= 4;
+		}
+
+		if (newLine.indexOf('D') != -1) {
+			result |= 2;
+		}
+
+		if (newLine.indexOf('M') != -1) {
+			result |= 1;
+		}
+
+		return result;
+	}
+
 }
